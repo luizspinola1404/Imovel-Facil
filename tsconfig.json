@@ -6,9 +6,17 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": false,
-    "noImplicitAny": false
+    "types": ["node"]
   },
   "include": [
-    "server/index.ts"
+    "server/index.ts",
+    "server/routes.ts",
+    "server/static.ts"
+  ],
+  "exclude": [
+    "server/vite.ts",
+    "server/replit_integrations",
+    "server/shared",
+    "node_modules"
   ]
 }
