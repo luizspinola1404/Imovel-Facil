@@ -3,7 +3,9 @@ import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 export * from "./models/auth"; // Import auth models
 
-export const properties = pgTable("properties", {
+export const properties = pgTable("properties", 
+                                  export {};
+{
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
