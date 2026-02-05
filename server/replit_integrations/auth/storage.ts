@@ -1,7 +1,6 @@
-import { UserAuth } from "../../../compartilhado/models/auth.js"; // corrigido para pasta raiz
+import { UserAuth } from "../../../compartilhado/models/auth.js"; // corrigido para raiz
 import db from "../../db.js"; // corrigido com extensão .js
 
-// Função para salvar autenticação no banco
 export async function salvarAuth(user: UserAuth) {
   try {
     await db.insert(user);
@@ -12,7 +11,6 @@ export async function salvarAuth(user: UserAuth) {
   }
 }
 
-// Função para buscar autenticação
 export async function buscarAuth(id: string): Promise<UserAuth | null> {
   try {
     const result = await db.findById(id);
