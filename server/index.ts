@@ -1,24 +1,28 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (_req, res) => {
-  res.send("API Imóvel Fácil online 🚀");
+// Rota principal
+app.get("/", (_req: Request, res: Response) => {
+  res.send("Imóvel Fácil rodando com sucesso 🚀");
 });
 
-app.get("/api/imoveis", (_req, res) => {
+// Exemplo de rota de API
+app.get("/api/imoveis", (_req: Request, res: Response) => {
+  // Aqui você pode conectar ao banco (Supabase/PG) e retornar dados reais
   res.json([
-    { id: 1, titulo: "Casa no Novo Encontro", cidade: "Juazeiro-BA", preco: 280000 },
-    { id: 2, titulo: "Terreno 10x30", cidade: "Juazeiro-BA", preco: 95000 }
+    { id: 1, titulo: "Casa no centro", preco: 250000 },
+    { id: 2, titulo: "Apartamento na praia", preco: 450000 }
   ]);
 });
 
-const PORT = process.env.PORT || 10000;
-
+// Porta do Render
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
