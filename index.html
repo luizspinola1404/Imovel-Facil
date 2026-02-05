@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Imóvel Fácil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+    }
+
+    header {
+      background: #0b5ed7;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #0b5ed7;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #198754;
+    }
+
+    .btn {
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background: #0b5ed7;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      background: #094bb5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏠 Imóvel Fácil</h1>
+    <p>Imóveis disponíveis em Juazeiro-BA</p>
+  </header>
+
+  <div class="container">
+    <div id="imoveis" class="grid"></div>
+  </div>
+
+  <script>
+    fetch("https://imovel-facil.onrender.com/api/imoveis")
+      .then(res => res.json())
+      .then(imoveis => {
+        const container = document.getElementById("imoveis");
+
+        imoveis.forEach(i => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+            <h3>${i.titulo}</h3>
+            <p>${i.cidade}</p>
+            <p class="price">R$ ${i.preco.toLocaleString("pt-BR")}</p>
+            <a class="btn" href="https://wa.me/5574999999999" target="_blank">
+              Falar no WhatsApp
+            </a>
+          `;
+
+          container.appendChild(card);
+        });
+      });
+  </script>
+
+</body>
+</html>
 
