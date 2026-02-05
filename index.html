@@ -82,24 +82,4 @@
       .then(imoveis => {
         const container = document.getElementById("imoveis");
 
-        imoveis.forEach(i => {
-          const card = document.createElement("div");
-          card.className = "card";
-
-          card.innerHTML = `
-            <h3>${i.titulo}</h3>
-            <p>${i.cidade}</p>
-            <p class="price">R$ ${i.preco.toLocaleString("pt-BR")}</p>
-            <a class="btn" href="https://wa.me/5574999999999" target="_blank">
-              Falar no WhatsApp
-            </a>
-          `;
-
-          container.appendChild(card);
-        });
-      });
-  </script>
-
-</body>
-</html>
-
+        imoveis.forEach(i
