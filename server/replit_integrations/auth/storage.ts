@@ -1,5 +1,5 @@
-import { UserAuth } from "../../shared/models/auth.js"; // corrigido: caminho relativo + extensão .js
-import db from "../../db.js"; // corrigido: extensão .js
+import { UserAuth } from "../../../compartilhado/models/auth.js"; // corrigido para pasta raiz
+import db from "../../db.js"; // corrigido com extensão .js
 
 // Função para salvar autenticação no banco
 export async function salvarAuth(user: UserAuth) {
