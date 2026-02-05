@@ -1,29 +1,30 @@
 {
-  "name": "rest-express",
+  "name": "imovel-facil",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "tsc",
-    "start": "node dist/server/index.js",
-    "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "dev": "tsx server/index.ts",
+    "start": "tsx server/index.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "express": "^4.21.2",
-    "express-session": "^1.18.2",
     "pg": "^8.16.3",
+    "wouter": "^3.3.5",
+    "ws": "^8.18.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "ws": "^8.18.0",
-    "zod": "^3.24.2"
-    // ... mantenha as demais dependências que você já tinha
+    "express-session": "^1.18.2",
+    "connect-pg-simple": "^10.0.0",
+    "drizzle-orm": "^0.39.3",
+    "drizzle-zod": "^0.7.0",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
-    "@types/node": "20.19.27",
     "typescript": "5.6.3",
     "tsx": "^4.20.5",
-    "vite": "^7.3.0"
+    "@types/node": "20.19.27"
   }
 }
