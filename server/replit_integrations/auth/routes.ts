@@ -1,18 +1,33 @@
-import type { Express } from "express";
-import { authStorage } from "./storage";
-import { isAuthenticated } from "./replitAuth";
+import { Router } from "express";
+import { salvarAuth, buscarAuth } from "./storage.js"; // corrigido: extensão .js
+import { replitAuth } from "./replitAuth.js"; // corrigido: extensão .js
 
-// Register auth-specific routes
-export function registerAuthRoutes(app: Express): void {
-  // Get current authenticated user
-  app.get("/api/auth/user", isAuthenticated, async (req: any, res) => {
-    try {
-      const userId = req.user.claims.sub;
-      const user = await authStorage.getUser(userId);
-      res.json(user);
-    } catch (error) {
-      console.error("Error fetching user:", error);
-      res.status(500).json({ message: "Failed to fetch user" });
+const router = Router();
+
+// Rota para autenticação via Replit
+router.post("/auth/replit", async (req, res) => {
+  try {
+    const user = await replitAuth(req.body);
+    await salvarAuth(user);
+    res.json(user);
+  } catch (error) {
+    console.error("Erro na autenticação Replit:", error);
+    res.status(500).json({ erro: "Falha na autenticação" });
+  }
+});
+
+// Rota para buscar usuário autenticado
+router.get("/auth/:id", async (req, res) => {
+  try {
+    const user = await buscarAuth(req.params.id);
+    if (!user) {
+      return res.status(404).json({ erro: "Usuário não encontrado" });
     }
-  });
-}
+    res.json(user);
+  } catch (error) {
+    console.error("Erro ao buscar usuário:", error);
+    res.status(500).json({ erro: "Falha ao buscar usuário" });
+  }
+});
+
+export default router;
