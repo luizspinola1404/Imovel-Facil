@@ -2,16 +2,18 @@ import express from "express";
 import cors from "cors";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // MIDDLEWARES
-app.use(cors({
-  origin: "*"
-}));
+app.use(cors());
 app.use(express.json());
 
 // ROTAS
-app.get("/api/imoveis", (req, res) => {
+app.get("/", (_req, res) => {
+  res.send("API Imóvel Fácil online 🚀");
+});
+
+app.get("/api/imoveis", (_req, res) => {
   res.json([
     {
       id: 1,
