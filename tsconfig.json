@@ -1,22 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "outDir": "server/dist",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": false,
-    "types": ["node"]
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "express"]
   },
-  "include": [
-    "server/index.ts",
-    "server/routes.ts",
-    "server/static.ts"
-  ],
-  "exclude": [
-    "server/vite.ts",
-    "server/replit_integrations",
-    "server/shared",
-    "node_modules"
-  ]
+  "include": ["server/**/*.ts"],
+  "exclude": ["node_modules"]
 }
