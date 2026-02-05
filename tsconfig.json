@@ -1,23 +1,15 @@
 {
-  "include": ["client/src/**/*", "shared/**/*", "server/**/*"],
-  "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
-    "incremental": true,
-    "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo",
-    "noEmit": true,
-    "module": "ESNext",
-    "strict": true,
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "jsx": "preserve",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "allowImportingTsExtensions": true,
-    "moduleResolution": "bundler",
-    "baseUrl": ".",
-    "types": ["node", "vite/client"],
-    "paths": {
-      "@/*": ["./client/src/*"],
-      "@shared/*": ["./shared/*"]
-    }
-  }
+    "target": "ES2020",              // versão moderna do JavaScript
+    "module": "CommonJS",            // gera arquivos .cjs (compatível com Node)
+    "outDir": "dist",                // saída da compilação
+    "rootDir": "server",             // pasta onde está seu código fonte
+    "esModuleInterop": true,         // permite importar pacotes como express
+    "strict": true,                  // ativa checagens rigorosas
+    "moduleResolution": "node",      // resolve módulos como o Node.js
+    "resolveJsonModule": true,       // permite importar arquivos .json
+    "skipLibCheck": true             // ignora checagem de tipos em libs
+  },
+  "include": ["server"],             // compila apenas os arquivos dentro da pasta server
+  "exclude": ["node_modules"]        // ignora dependências
 }
