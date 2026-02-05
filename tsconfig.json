@@ -2,20 +2,17 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "outDir": "dist",
+    "outDir": "server/dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": false,
     "noImplicitAny": false
   },
   "include": [
-    "index.ts",
-    "routes.ts",
-    "static.ts",
-    "storage.ts"
+    "server/**/*.ts"
   ],
   "exclude": [
-    "shared",
+    "server/shared",
     "**/*.config.ts",
     "tailwind.config.ts",
     "node_modules"
