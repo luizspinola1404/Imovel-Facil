@@ -6,8 +6,18 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": false,
-    "noImplicitAny": false,
-    "forceConsistentCasingInFileNames": false
+    "noImplicitAny": false
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "index.ts",
+    "routes.ts",
+    "static.ts",
+    "storage.ts"
+  ],
+  "exclude": [
+    "shared",
+    "**/*.config.ts",
+    "tailwind.config.ts",
+    "node_modules"
+  ]
 }
