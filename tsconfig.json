@@ -4,7 +4,10 @@
     "module": "CommonJS",
     "outDir": "dist",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": false
   },
   "include": ["**/*.ts"]
 }
