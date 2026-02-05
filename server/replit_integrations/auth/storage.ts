@@ -1,34 +1,24 @@
-import { users, type User, type UpsertUser } from "@shared/models/auth";
-import { db } from "../../db";
-import { eq } from "drizzle-orm";
+import { UserAuth } from "../../shared/models/auth.js"; // corrigido: caminho relativo + extensão .js
+import db from "../../db.js"; // corrigido: extensão .js
 
-// Interface for auth storage operations
-// (IMPORTANT) These user operations are mandatory for Replit Auth.
-export interface IAuthStorage {
-  getUser(id: string): Promise<User | undefined>;
-  upsertUser(user: UpsertUser): Promise<User>;
-}
-
-class AuthStorage implements IAuthStorage {
-  async getUser(id: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user;
-  }
-
-  async upsertUser(userData: UpsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(userData)
-      .onConflictDoUpdate({
-        target: users.id,
-        set: {
-          ...userData,
-          updatedAt: new Date(),
-        },
-      })
-      .returning();
-    return user;
+// Função para salvar autenticação no banco
+export async function salvarAuth(user: UserAuth) {
+  try {
+    await db.insert(user);
+    console.log("Auth salvo com sucesso:", user);
+  } catch (error) {
+    console.error("Erro ao salvar auth:", error);
+    throw error;
   }
 }
 
-export const authStorage = new AuthStorage();
+// Função para buscar autenticação
+export async function buscarAuth(id: string): Promise<UserAuth | null> {
+  try {
+    const result = await db.findById(id);
+    return result || null;
+  } catch (error) {
+    console.error("Erro ao buscar auth:", error);
+    return null;
+  }
+}
