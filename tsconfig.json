@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",              // versão moderna do JavaScript
-    "module": "CommonJS",            // gera arquivos .cjs (compatível com Node)
-    "outDir": "dist",                // saída da compilação
-    "rootDir": "server",             // pasta onde está seu código fonte
-    "esModuleInterop": true,         // permite importar pacotes como express
-    "strict": true,                  // ativa checagens rigorosas
-    "moduleResolution": "node",      // resolve módulos como o Node.js
-    "resolveJsonModule": true,       // permite importar arquivos .json
-    "skipLibCheck": true             // ignora checagem de tipos em libs
+    "target": "ES2020",               // versão moderna do JavaScript
+    "module": "CommonJS",             // formato compatível com Node.js
+    "outDir": "dist",                 // pasta de saída da compilação
+    "rootDir": "server",              // pasta onde está o código fonte
+    "esModuleInterop": true,          // permite importar pacotes como express
+    "strict": true,                   // ativa checagens rigorosas
+    "moduleResolution": "node",       // resolve módulos como o Node.js
+    "resolveJsonModule": true,        // permite importar arquivos .json
+    "skipLibCheck": true              // ignora checagem de tipos em libs
   },
-  "include": ["server"],             // compila apenas os arquivos dentro da pasta server
-  "exclude": ["node_modules"]        // ignora dependências
+  "include": ["server"],              // compila apenas os arquivos dentro da pasta server
+  "exclude": ["node_modules", "dist"] // ignora dependências e saída compilada
 }
