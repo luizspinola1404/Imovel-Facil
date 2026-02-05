@@ -9,12 +9,6 @@
     "noImplicitAny": false
   },
   "include": [
-    "server/**/*.ts"
-  ],
-  "exclude": [
-    "server/shared",
-    "**/*.config.ts",
-    "tailwind.config.ts",
-    "node_modules"
+    "server/index.ts"
   ]
 }
